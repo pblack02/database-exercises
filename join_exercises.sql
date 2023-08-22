@@ -50,5 +50,17 @@ FROM employees AS e
 WHERE (YEAR(s.to_date) = 9999 AND YEAR(dm.to_date) = 9999);
 
 
+SELECT CONCAT(first_name, ' ', last_name) AS employees, d.dept_name AS department, CONCAT(first_name, ' ',e.last_name) AS manger
+FROM employees AS e
+         JOIN current_dept_emp cde
+             on e.emp_no = cde.emp_no
+         JOIN dept_manager AS dm
+              on e.emp_no = dm.emp_no
+         JOIN departments AS d
+              on dm.dept_no = d.dept_no
+WHERE (YEAR(cde.to_date) = 9999 AND YEAR(dm.to_date) = 9999);
+
+
+
 
 
